@@ -1,0 +1,11 @@
+[{:itonami.blueprint/social-impact [:worker-safety :terrain-hazard-mitigation :production-continuity]
+  :itonami.blueprint/domain :forestry/site-scheduling-logistics-coordination
+  :itonami.blueprint/required-technologies [:robotics :identity :audit-ledger]
+  :itonami.blueprint/isco-08 "9215"
+  :itonami.blueprint/name "Forestry Site Scheduling and Logistics Coordination Practice"
+  :itonami.blueprint/governor :forestry-site-governor
+  :itonami.blueprint/robotics true
+  :db/id -1
+  :itonami.blueprint/status :public-oss
+  :itonami.blueprint/id "cloud-itonami-isco-9215"
+  :itonami.blueprint/license "AGPL-3.0-or-later"}]
