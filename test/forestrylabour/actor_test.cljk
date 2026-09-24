@@ -1,5 +1,5 @@
 (ns forestrylabour.actor-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [forestrylabour.actor :as actor]
             [forestrylabour.store :as store]))
 

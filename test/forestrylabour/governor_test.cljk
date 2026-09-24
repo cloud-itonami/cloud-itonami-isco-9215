@@ -1,5 +1,5 @@
 (ns forestrylabour.governor-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [forestrylabour.store :as store]
             [forestrylabour.advisor :as advisor]
             [forestrylabour.governor :as governor]))
