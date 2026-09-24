@@ -1,0 +1,36 @@
+;; What this vertical's robot physically does, declared for
+;; kotoba.robotics.process (kotoba-lang/robotics). `kbb -M:physics` runs it.
+;;
+;; README "Robotics premise": a forestry-site scheduling/logistics coordination
+;; robot performs crew scheduling, task/progress logging and
+;; forestry-supplies procurement coordination for a forestry labour crew
+;; (ISCO 9215). It never performs forestry work. Its physical work is the
+;; supplies logistics: carrying fuel/chain-oil cans and tools up the skid
+;; trail to the felling crew, and lifting the fuel cans onto the crew
+;; vehicle bed.
+;;
+;; Every number without a cited source is marked `estimate` in its :basis.
+;; Replacing an estimate with a sourced value is this bot's growth work.
+{:physics/schema "itonami.physical-ai.spec.v1"
+ :repo "cloud-itonami/cloud-itonami-isco-9215"
+ :cases
+ [{:id :supplies-up-skid-trail
+   :kind :transport
+   :procedure "tracked carrier robot takes 60 kg of fuel/chain-oil cans and tools 200 m up the skid trail to the felling crew"
+   :params {:mass-kg 150.0 :payload-kg 60.0 :distance-m 200.0 :v-max-mps 1.0 :a-max-mps2 0.4
+            :brake-decel-mps2 0.6 :drive-force-n 900.0 :crr 0.12
+            :cog-height-m 0.50 :support-half-length-m 0.45 :payload-cog-height-m 0.80
+            :max-time-s 1800.0}
+   :sweep {:param :slope-deg :values [0.0 5.0 10.0 15.0 20.0 25.0]}
+   :quantity :cycle-time-s
+   :limit {:max 260.0 :basis "estimate: one resupply leg within the crew's refuelling break"}
+   :boundary {:lo 0.0 :hi 35.0}}
+  {:id :fuel-can-onto-vehicle-bed
+   :kind :manipulator
+   :procedure "arm on the carrier lifts a filled 20 L fuel can from the ground onto the crew vehicle bed"
+   :params {:l1-m 0.60 :l2-m 0.50 :m1-kg 8.0 :m2-kg 5.0
+            :from [0.70 -0.20] :to [0.35 0.70] :duration-s 3.0 :steps 500}
+   :sweep {:param :payload-kg :values [5.0 10.0 15.0 20.0 25.0]}
+   :quantity :peak-tau1-nm
+   :limit {:max 220.0 :basis "estimate: continuous shoulder torque of a ~20 kg-payload field arm"}
+   :boundary {:lo 1.0 :hi 60.0}}]}
