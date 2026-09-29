@@ -1,6 +1,6 @@
 (ns forestrylabour.store
   "SSoT for the ISCO-08 9215 forestry-site scheduling/logistics
-  coordination actor (itonami actor pattern, ADR-2607121000 / CLAUDE.md
+  coordination actor (itonami actor pattern, ADR-2607121000 / AGENTS.md
   Actors section; README's 'Robotics premise' — a forestry-site scheduling/
   logistics coordination robot performs crew scheduling, task/progress-
   record logging and forestry-supplies procurement coordination for a
